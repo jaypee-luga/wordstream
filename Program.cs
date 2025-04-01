@@ -2,6 +2,7 @@
 using System.Runtime.CompilerServices;
 using System.Security.Cryptography;
 using System.Text;
+using wordCounter;
 
 
 //byte size min and max sizes
@@ -30,12 +31,13 @@ try
             bytesRead = await stream.ReadAsync(buffer, 0, buffer.Length);
 
             //stringify
-            string content = Encoding.UTF8.GetString(buffer, 0, bytesRead);
+            string content = Encoding.UTF8.GetString(buffer, 0, bytesRead).Trim();
 
             Console.ForegroundColor = ConsoleColor.White;
             Console.WriteLine(content);
 
-            processWordStream(content);
+            content.wordCount();
+            content.fiveLargestWords();
 
             Console.ReadLine();
         }
@@ -46,24 +48,4 @@ try
 catch (Exception ex)
 {
     Console.WriteLine($"Exception Thrown:\n\nStackTrace:{ex.StackTrace}\n\n{ex.Message}");
-}
-
-static void processWordStream(string str)
-{
-    Console.WriteLine($"Total Number of Characters: {str.Length}");
-    Console.WriteLine($"Total Number of Words{str.Split(' ').Length}");
-
-    Console.WriteLine();
-
-
-}
-
-static List<string> fiveLargestWords(string str)
-{
-    return default;
-}
-
-static List<string> fiveSmallestWords(string str)
-{
-
 }
