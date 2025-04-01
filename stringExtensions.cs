@@ -85,7 +85,9 @@ public static class stringExtensions
                 dict[s] += 1;
             }
         }
-        return dict;
+        dict.Remove(' ');
+
+        return (Dictionary<char, int>)dict.OrderByDescending(d => d.Value);
     }
     //statci
 }

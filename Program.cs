@@ -79,5 +79,10 @@ static void processContent(string content)
     }
     System.Console.WriteLine();
     Console.WriteLine("========================================");
-    content.allCharacters();
+    System.Console.WriteLine("All characters from most to least used in the stream");
+    foreach (var kp in content.allCharacters())
+    {
+        System.Console.WriteLine($"Char: `{kp.Key}` Count: {kp.Value}");
+    }
+
 }
