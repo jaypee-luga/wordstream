@@ -42,8 +42,6 @@ try
             Console.WriteLine("Ctrl+C to Exit...");
             Console.ReadLine();
         }
-
-
     }
 }
 catch (Exception ex)
@@ -65,30 +63,30 @@ static void processContent(string content)
     {
         Console.Write($"`{w}` ");
     }
-    System.Console.WriteLine();
+    Console.WriteLine();
     Console.WriteLine("========================================");
     Console.WriteLine("5 Smallest Words:");
     foreach (var w in content.fiveSmallestWords())
     {
         Console.Write($"`{w}` ");
     }
-    System.Console.WriteLine();
+    Console.WriteLine();
     Console.WriteLine("========================================");
     Console.WriteLine("Top 10 Frequest Appearing Words:");
     foreach (var w in content.top10frequentlyAppearingWords())
     {
         Console.Write($"`{w}` ");
     }
-    System.Console.WriteLine();
+    Console.WriteLine();
     Console.WriteLine("========================================");
-    System.Console.WriteLine("All characters from most to least used in the stream");
+    Console.WriteLine("All characters from most to least used in the stream");
     var column = 1;
     foreach (var kp in content.allCharacters())
     {
-        System.Console.Write($"[Char: `{kp.Key}` Count: {kp.Value}]\t");
+        Console.Write($"[Char: `{kp.Key}` Count: {kp.Value}]\t");
         column++;
 
-        if (column == 5) { column = 1; System.Console.WriteLine(); }
+        if (column == 5) { column = 1; Console.WriteLine(); }
 
     }
 
