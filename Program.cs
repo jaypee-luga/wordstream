@@ -37,7 +37,9 @@ try
             Console.WriteLine(content);
 
             processContent(content);
-
+            Console.ForegroundColor = ConsoleColor.Cyan;
+            Console.WriteLine("\nPress enter (↵) to fetch words from Stream... ");
+            Console.WriteLine("Ctrl+C to Exit...");
             Console.ReadLine();
         }
 
@@ -80,9 +82,14 @@ static void processContent(string content)
     System.Console.WriteLine();
     Console.WriteLine("========================================");
     System.Console.WriteLine("All characters from most to least used in the stream");
+    var column = 1;
     foreach (var kp in content.allCharacters())
     {
-        System.Console.WriteLine($"Char: `{kp.Key}` Count: {kp.Value}");
+        System.Console.Write($"[Char: `{kp.Key}` Count: {kp.Value}]\t");
+        column++;
+
+        if (column == 5) { column = 1; System.Console.WriteLine(); }
+
     }
 
 }

@@ -6,14 +6,14 @@ public static class stringExtensions
 {
     public static int wordCount(this string str)
     {
-        return str.Split(' ', StringSplitOptions.RemoveEmptyEntries).Length;
+        return str.Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries).Length;
     }
 
     public static List<string> fiveLargestWords(this string str)
     {
         var result = new List<string>();
         var dict = new Dictionary<string, int>();
-        foreach (var s in str.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        foreach (var s in str.ToLower().Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries))
         {
             if (!dict.ContainsKey(s))
                 dict.Add(s, s.Length);
@@ -33,7 +33,7 @@ public static class stringExtensions
     {
         var result = new List<string>();
         var dict = new Dictionary<string, int>();
-        foreach (var s in str.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        foreach (var s in str.ToLower().Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries))
         {
             if (!dict.ContainsKey(s))
                 dict.Add(s, s.Length);
@@ -53,7 +53,7 @@ public static class stringExtensions
     {
         var result = new List<string>();
         var dict = new Dictionary<string, int>();
-        foreach (var s in str.ToLower().Split(' ', StringSplitOptions.RemoveEmptyEntries))
+        foreach (var s in str.ToLower().Split(new char[] { ' ', '.' }, StringSplitOptions.RemoveEmptyEntries))
         {
             if (!dict.ContainsKey(s))
                 dict.Add(s, 1);
@@ -73,7 +73,7 @@ public static class stringExtensions
         return result;
     }
 
-    public static Dictionary<char, int> allCharacters(this string str)
+    public static IEnumerable<KeyValuePair<char, int>> allCharacters(this string str)
     {
         var dict = new Dictionary<char, int>();
         foreach (var s in str.ToLower().ToCharArray())
@@ -87,7 +87,7 @@ public static class stringExtensions
         }
         dict.Remove(' ');
 
-        return (Dictionary<char, int>)dict.OrderByDescending(d => d.Value);
+        return dict.OrderByDescending(d => d.Value);
     }
-    //statci
+
 }
